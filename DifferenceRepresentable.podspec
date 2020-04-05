@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "DifferenceRepresentable"
-  s.version     = "0.1.0"
+  s.version     = "0.1.1"
   s.summary     = "Tiny library to detect differences between two instances."
   s.homepage    = "https://github.com/satoshi-takano/DifferenceRepresentable"
   s.license     = {
