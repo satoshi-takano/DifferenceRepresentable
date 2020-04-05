@@ -4,14 +4,15 @@ For example, you can check whether the users edited their data at some kind of f
 ```swift
 struct User: DifferenceRepresentable {
     let name: String
-    let age: Int
     let country: String
     let imageUrl: URL?
 }
 
-let userA = User(name: "Bob", age: 10, country: "Japan", imageUrl: URL(string: "https://example.com"))
-let userB = User(name: "Bob", age: 20, country: "United State", imageUrl: nil)
-var diff = userA.difference(between: userB)
+let userA = User(name: "Bob", country: "Japan", imageUrl: URL(string: "https://example.com"))
+let userB = User(name: "Bob", country: "United State", imageUrl: nil)
+var diff = userA.difference(from: userB)
+diff.keys   // ["country", "imageUrl"]
+diff.values // ["United State", URL(https://example.com)]
 ```
 ## Requirements
 - Xcode 11.x / Swift 5.x
