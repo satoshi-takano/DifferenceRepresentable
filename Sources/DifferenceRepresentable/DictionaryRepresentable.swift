@@ -5,7 +5,7 @@ public protocol DictionaryRepresentable: Encodable {
 }
 
 extension DictionaryRepresentable {
-    func asDictionary() -> [AnyHashable: AnyHashable]? {
+    public func asDictionary() -> [AnyHashable: AnyHashable]? {
         guard let data = try? JSONEncoder().encode(self) else {
             return nil
         }

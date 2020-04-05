@@ -15,7 +15,7 @@ public protocol DifferenceRepresentable: DictionaryRepresentable {
 }
 
 extension DifferenceRepresentable {
-    func difference(between other: DifferenceRepresentable) -> [AnyHashable: AnyHashable] {
+    public func difference(between other: DifferenceRepresentable) -> [AnyHashable: AnyHashable] {
         guard let self = asDictionary(), let other = other.asDictionary() else {
             return [:]
         }
