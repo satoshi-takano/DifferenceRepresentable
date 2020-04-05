@@ -9,10 +9,10 @@ struct User: DifferenceRepresentable {
 }
 
 let userA = User(name: "Bob", country: "Japan", imageUrl: URL(string: "https://example.com"))
-let userB = User(name: "Bob", country: "United State", imageUrl: nil)
+let userB = User(name: "Bob", country: "United States", imageUrl: nil)
 var diff = userA.difference(from: userB)
 diff.keys   // ["country", "imageUrl"]
-diff.values // ["United State", URL(https://example.com)]
+diff.values // ["United States", URL(https://example.com)]
 ```
 ## Requirements
 - Xcode 11.x / Swift 5.x

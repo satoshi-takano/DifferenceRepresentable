@@ -11,7 +11,7 @@ struct User: DifferenceRepresentable {
 final class DifferenceRepresentableTests: XCTestCase {
     func testExample() {
         let userA = User(name: "Bob", age: 10, country: "Japan", imageUrl: URL(string: "https://example.com"))
-        let userB = User(name: "Bob", age: 20, country: "United State", imageUrl: nil)
+        let userB = User(name: "Bob", age: 20, country: "United States", imageUrl: nil)
         var diff = userA.difference(from: userB)
         XCTAssertEqual(diff.keys.count, 3)
         XCTAssertEqual(diff["age"], 10)
@@ -21,7 +21,7 @@ final class DifferenceRepresentableTests: XCTestCase {
         diff = userB.difference(from: userA)
         XCTAssertEqual(diff.keys.count, 3)
         XCTAssertEqual(diff["age"], 20)
-        XCTAssertEqual(diff["country"], "United State")
+        XCTAssertEqual(diff["country"], "United States")
         XCTAssertNil(diff["imageUrl"])
     }
 
