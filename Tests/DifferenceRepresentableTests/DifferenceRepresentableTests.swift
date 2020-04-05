@@ -13,13 +13,16 @@ final class DifferenceRepresentableTests: XCTestCase {
         let userA = User(name: "Bob", age: 10, country: "Japan", imageUrl: URL(string: "https://example.com"))
         let userB = User(name: "Bob", age: 20, country: "United State", imageUrl: nil)
         var diff = userA.difference(between: userB)
-        XCTAssertEqual(diff.keys.count, 2)
+        XCTAssertEqual(diff.keys.count, 3)
         XCTAssertEqual(diff["age"], 20)
         XCTAssertEqual(diff["country"], "United State")
+        XCTAssertNil(diff["imageUrl"])
+
         diff = userB.difference(between: userA)
-        XCTAssertEqual(diff.keys.count, 2)
+        XCTAssertEqual(diff.keys.count, 3)
         XCTAssertEqual(diff["age"], 10)
         XCTAssertEqual(diff["country"], "Japan")
+        XCTAssertEqual(diff["imageUrl"] as? URL, URL(string: "https://example.com"))
     }
 
     static var allTests = [

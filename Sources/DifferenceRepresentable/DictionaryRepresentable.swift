@@ -5,13 +5,19 @@ public protocol DictionaryRepresentable: Encodable {
 }
 
 extension DictionaryRepresentable {
+    private func propertyNames() -> [String] {
+        return Mirror(reflecting: self).children.compactMap { $0.label }
+    }
+
+    private func value(for key: String) -> AnyHashable? {
+        let m = Mirror(reflecting: self)
+        let properties = Array(m.children)
+        return properties.first { $0.label == key }?.value as? AnyHashable
+    }
+
     public func asDictionary() -> [AnyHashable: AnyHashable]? {
-        guard let data = try? JSONEncoder().encode(self) else {
-            return nil
+        propertyNames().reduce(into: [:]) { result, key in
+            result[key] = value(for: key)
         }
-        return try? JSONSerialization.jsonObject(
-            with: data,
-            options: []
-        ) as? [AnyHashable: AnyHashable]
     }
 }

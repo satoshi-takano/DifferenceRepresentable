@@ -11,17 +11,16 @@ private extension Dictionary where Value: Equatable {
 }
 
 public protocol DifferenceRepresentable: DictionaryRepresentable {
-    func difference(between other: DifferenceRepresentable) -> [AnyHashable: AnyHashable]
+    func difference(between other: DifferenceRepresentable) -> Difference
 }
 
 extension DifferenceRepresentable {
-    public func difference(between other: DifferenceRepresentable) -> [AnyHashable: AnyHashable] {
+    public func difference(between other: DifferenceRepresentable) -> Difference {
         guard let self = asDictionary(), let other = other.asDictionary() else {
-            return [:]
+            return Difference(keys: [], values: [])
         }
         let keys = self.differentPropertieKeys(from: other)
-        return keys.reduce(into: [:]) { result, key in
-            result[key] = other[key]
-        }
+        let values = keys.map { other[$0] }
+        return Difference(keys: keys, values: values)
     }
 }
