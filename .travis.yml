@@ -1,0 +1,8 @@
+language: objective-c
+osx_image: xcode11
+
+xcode_project: DifferenceRepresentable.xcodeproj
+xcode_scheme: DifferenceRepresentable
+
+script:
+  - xcodebuild build-for-testing test-without-building -project DifferenceRepresentable.xcodeproj -scheme DifferenceRepresentable -configuration Release ENABLE_TESTABILITY=YES
