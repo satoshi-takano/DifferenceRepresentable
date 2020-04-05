@@ -1,12 +1,25 @@
 import XCTest
 @testable import DifferenceRepresentable
 
+struct User: DifferenceRepresentable {
+    let name: String
+    let age: Int
+    let country: String
+    let imageUrl: URL?
+}
+
 final class DifferenceRepresentableTests: XCTestCase {
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(DifferenceRepresentable().text, "Hello, World!")
+        let userA = User(name: "Bob", age: 10, country: "Japan", imageUrl: URL(string: "https://example.com"))
+        let userB = User(name: "Bob", age: 20, country: "United State", imageUrl: nil)
+        var diff = userA.difference(between: userB)
+        XCTAssertEqual(diff.keys.count, 2)
+        XCTAssertEqual(diff["age"], 20)
+        XCTAssertEqual(diff["country"], "United State")
+        diff = userB.difference(between: userA)
+        XCTAssertEqual(diff.keys.count, 2)
+        XCTAssertEqual(diff["age"], 10)
+        XCTAssertEqual(diff["country"], "Japan")
     }
 
     static var allTests = [
