@@ -22,7 +22,7 @@ diff.values // ["United States", URL(https://example.com)]
 - watchOS 2.0 or later
 
 ## Installation
-This library can be installed via Swift Package Manager and CocoaPods
+This library can be installed via Swift Package Manager and CocoaPods.
 ### CocoaPods
 Insert `pod 'DifferenceRepresentable'` to your Podfile and run `pod install`.
 
