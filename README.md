@@ -28,3 +28,8 @@ Insert `pod 'DifferenceRepresentable'` to your Podfile and run `pod install`.
 
 ## License
 This library is under the MIT License.
+
+---
+Keywords for SEO.
+- Swift Object Difference Detection
+- Swift 差分 検出
